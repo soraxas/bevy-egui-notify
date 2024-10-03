@@ -1,4 +1,8 @@
-# egui-notify
+
+| <ins>__FORK NOTICE__</ins>: This is a simple fork that uses bevy_egui's re-exported egui crate, such that one can use the same egui version within the same applications (otherwise, there would be issue if you try to pass in an older/newer version of egui context to draw things). |
+| ------------------------------------------------------------------------------ |
+
+# bevy-egui-notify
 
 Simple notifications library for [`egui`](https://github.com/emilk/egui)
 
@@ -9,38 +13,25 @@ Simple notifications library for [`egui`](https://github.com/emilk/egui)
 ## Usage
 
 ```rust
-use egui_notify::Toasts;
-use std::time::Duration;
+use bevy_egui_notify::EguiToastsPlugin;
 
-// initialize once
-let mut toasts = Toasts::default();
+app.add_plugins(...)
+    .add_plugins(EguiToastsPlugin::default());
 ```
 
 ```rust
-// somewhere within [egui::App::update]...
-toasts.info("Hello world!").duration(Duration::from_secs(5));
-// ...
-toasts.show(ctx);
+
+fn my_system(
+    toasts: ResMut<EguiToasts>,
+    ...
+) {
+    ...
+    toasts.0.info("hello");
+}
 ```
 
 ## Installation
 
 ```sh
-cargo add egui-notify
+cargo add bevy-egui-notify
 ```
-
-```toml
-[dependencies]
-egui-notify = "0.16.0"
-```
-
-## Difference to [`egui-toast`](https://github.com/urholaukkarinen/egui-toast)
-
-### `egui-notify` has
-
-- Animations for appearing/disappearing toasts
-- Duration meter for expiring toasts
-- Toast positioning not influenced by which `Context` you pass to it (like if for example, you passed in a `Context` already altered for an `egui::Window`)
-- Differing methodology (create `Toasts` instance once, save save somewhere in application state)
-- Threadsafe `Toasts` instance, implements `Send`, `Sync`.
-- No support for custom toasts

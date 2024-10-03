@@ -3,6 +3,10 @@
 
 #![warn(missing_docs)]
 
+use bevy_egui::egui;
+mod bevy_plugin;
+pub use bevy_plugin::*;
+
 mod toast;
 pub use toast::*;
 mod anchor;

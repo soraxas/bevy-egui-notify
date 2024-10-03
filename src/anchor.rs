@@ -1,3 +1,5 @@
+use bevy_egui::egui;
+
 use egui::{pos2, Pos2, Vec2};
 
 /// Anchor where to show toasts

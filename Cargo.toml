@@ -1,18 +1,20 @@
 [package]
-name = "egui-notify"
+name = "bevy-egui-notify"
 version = "0.16.0"
 edition = "2021"
 license = "MIT"
-repository = "https://github.com/ItsEthra/egui-notify"
-description = "Simple notifications library for EGUI"
-authors = ["ItsEthra"]
+repository = "https://github.com/soraxas/bevy-egui-notify"
+description = "Simple notifications library for EGUI, in the bevy system"
+authors = ["ItsEthra", "soraxas"]
 readme = "README.md"
 
 [lib]
 path = "src/lib.rs"
 
 [dependencies]
-egui = { version = "0.29", default-features = false }
+# egui = { version = "0.29", default-features = false }
+bevy_egui = { version = "0.29", default-features = false }
+bevy = "*"
 
 [dev-dependencies]
 eframe = { version = "0.29", default-features = false, features = [

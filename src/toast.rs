@@ -1,3 +1,5 @@
+use bevy_egui::egui;
+
 use crate::{Anchor, TOAST_HEIGHT, TOAST_WIDTH};
 use egui::{pos2, vec2, FontId, Pos2, Rect};
 use std::{fmt::Debug, time::Duration};
